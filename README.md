@@ -2,43 +2,42 @@
 > *For more information and user feedback, take a look at my [Thread](https://egpu.io/forums/thunderbolt-linux-setup/ubuntu-19-04-easy-to-use-setup-script-for-your-egpu/) over on egpu.io or open an issue on Github.*
 
 Distribution agnostic eGPU script that works with **NVIDIA** and **AMD** cards.
-
+Несложный скрипт для пользователей ноутбучных адаптеров для внешних видеокарт. Призван упростить выбор видеокарты по умолчанию без ковыряния конфигов руками.
 ---
 
-- [Description](#description)
-- [Screenshot](#screenshot)
-- [Requirements](#requirements)
-- [Installation](#installation)
+- [Описание](#description)
+- [Скриншот](#screenshot)
+- [Требования](#requirements)
+- [Установка](#installation)
   - [Ubuntu (apt)](#ubuntu-apt)
   - [Other](#other)
-- [Commands](#commands)
-- [Troubleshooting](#troubleshooting)
+- [Команды](#commands)
+- [Проблемы](#troubleshooting)
 - [Background Information](#background-information)
 
 ---
 
 ## Description
-The goal of this script is to lower the barrier for Linux users to use their eGPU on the Linux Desktop.
-An interactive setup allows the user to choose their external GPU, which will then be automatically chosen as the primary GPU if it's connected on bootup.
+Цель этого скрипта - упростить настройку адаптера eGPU в вашем дистрибутиве Linux. Установка проходит в интерактивном режиме с понятными пояснениями.
 
-**This does not provide you with a plug-and-play functionality like you may know from Windows.<br> You still need to reboot your computer in order to connect / disconnect your eGPU.**.
+**Достижение функционала как в Windows пока не представляется возможным.<br> Скорее всего после применения скрипта необходимо перезагрузить компьютер для полного функционала eGPU.**.
 
 ## Screenshot
 ![Screenshot of setup](https://raw.githubusercontent.com/hertg/egpu-switcher/master/images/screenshot_setup.png)
 
 ## Requirements
-1. Your OS is running X-Server.
-1. You have at least **pciutils 3.3.x or higher** installed (check with `lspci --version`).
-1. You have at least **Bash 4.x or higher** installed.
-1. You have **already authorized your Thunderbolt EGPU** and are able to connect.
-1. You have already **installed the latest (proprietary) drivers for your GPUs**.
+1. Система работает на X-Server.
+1. Установлена **pciutils 3.3.x или выше** installed (проверить командой `lspci --version`).
+1. Минимум **Bash 4.x или выше**.
+1. Настроенный физически и подключеный физически к ноутбуку адаптер eGPU.
+1. Полностью установленный драйвер на подключенную через eGPU видеокарту.
 
 ---
 
 ## Installation
 
 ### Ubuntu (apt)
-Installation and setup:
+Установка и настройка:
 ```bash
 $ sudo add-apt-repository ppa:hertg/egpu-switcher
 $ sudo apt update
@@ -46,13 +45,13 @@ $ sudo apt install egpu-switcher
 $ sudo egpu-switcher setup
 ```
 
-Uninstall:
+Удаление:
 ```bash
 $ apt remove egpu-switcher
 ```
 
 ### Other
-Installation and setup:
+Установка и настройка:
 ```bash
 $ git clone git@github.com:hertg/egpu-switcher.git
 $ cd egpu-switcher
@@ -60,9 +59,9 @@ $ make install
 $ sudo egpu-switcher setup
 ```
 
-Uninstall: 
-> **Critical Warning**: **Do not use this command on any version prior to `0.10.2`!**\
-> There was a critical typo in the Makefile which would delete your `/usr/bin` folder. Please do a manual uninstall by removing the `egpu-switcher` folder in the `/usr/bin/` and the `/usr/share/` directory.
+Удаление: 
+> **Внимание!**: **Не используйте данный метод на версиях ниже `0.10.2`!**\
+> Была критическая ошибка в Makefile, которая удаляет папку `/usr/bin`. Лучше вручную удалить папку `egpu-switcher` в каталогах `/usr/bin/` и `/usr/share/`.
 ```bash
 $ sudo egpu-switcher cleanup
 $ make uninstall
