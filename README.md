@@ -1,7 +1,6 @@
 # egpu-switcher
-> *For more information and user feedback, take a look at my [Thread](https://egpu.io/forums/thunderbolt-linux-setup/ubuntu-19-04-easy-to-use-setup-script-for-your-egpu/) over on egpu.io or open an issue on Github.*
 
-Distribution agnostic eGPU script that works with **NVIDIA** and **AMD** cards.
+
 Несложный скрипт для пользователей ноутбучных адаптеров для внешних видеокарт. Призван упростить выбор видеокарты по умолчанию без ковыряния конфигов руками.
 ---
 
